@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generate Job Description</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f9f9f9;
+    }
+    .container {
+        width: 60%;
+        margin: auto;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .job-description {
+        line-height: 1.6;
+    }
+    .job-description h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+    .job-details b {
+        display: block;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        font-size: 1.2em;
+    }
+    .job-details ul {
+        list-style-type: disc;
+        padding-left: 1.5em;
+    }
+    .job-details ul li {
+        margin-bottom: 0.5em;
+    }
+    h1 {
+        text-align: center;
+        font-size: 2em;
+        margin-bottom: 1em;
+    }
+    form {
+        width: 60%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+    label {
+        margin-bottom: 10px;
+        font-size: 1em;
+    }
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        font-size: 1em;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 1em;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+<body>
+    <div class="container">
+
+    <h1>Generate Job Description</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="job_title">Job Title:</label>
+        <input type="text" id="job_title" name="job_title" required>
+        <button type="submit">Generate</button>
+    </form>
+    <div class="job-description">
+
+    {% if job_description %}
+
+        <h2>Job Description</h2>
+        {{ job_description|safe }}
+        <p><strong>Total Tokens Used:</strong> {{ total_tokens }}</p>
+        <p><strong>Estimated Cost:</strong> ${{ cost }}</p>
+    {% endif %}
+    </div>
+</div>
+</body>
+</html>
