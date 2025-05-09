@@ -9,7 +9,7 @@ import google.generativeai as genai
 from dotenv import load_dotenv
 from time import time
 
-GEMINI_API_KEY = "AIzaSyBQw-vnSAUrMHoqbDWjWIiHTKpJxIvMVt0"
+GEMINI_API_KEY = "API key"
 genai.configure(api_key=GEMINI_API_KEY)
 
 # Estimate token count (assuming roughly 4 characters per token)
